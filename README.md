@@ -1,4 +1,4 @@
-# Zorvyn Fins
+# FinDash
 
 A premium, "Zen-Futuristic" financial dashboard and transaction registry application. Built focusing on high-density data views, fluid micro-interactions, and a bespoke glass-morphic aesthetic.
 

@@ -16,7 +16,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: 'Zorvyn Fins',
+  title: 'FinDash',
   description: 'Future-forward financial tracking and insights',
 };
 

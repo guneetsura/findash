@@ -28,7 +28,7 @@ export function Sidebar() {
                 <Wallet className="w-4 h-4 text-white" />
               </div>
               <h1 className="text-xl font-display font-bold text-text-primary tracking-wide">
-                Zorvyn
+                FinDash
               </h1>
             </div>
           </div>
