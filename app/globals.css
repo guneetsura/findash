@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  --color-accent-emerald: #10b981;
+  --color-accent-violet: #8b5cf6;
+  
+  --color-glass: var(--glass);
+  --color-glass-border: var(--glass-border);
+  
+  --color-surface-hover: var(--surface-hover);
+  --color-surface-border: var(--surface-border);
+  --color-text-primary: var(--text-primary);
+  --color-text-muted: var(--text-muted);
+
+  --font-display: var(--font-outfit);
+  --font-body: var(--font-inter);
+}
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  
+  --glass: rgba(0, 0, 0, 0.03);
+  --glass-border: rgba(0, 0, 0, 0.08);
+
+  --surface-hover: rgba(0, 0, 0, 0.04);
+  --surface-border: rgba(0, 0, 0, 0.08);
+  --text-primary: #0f172a;
+  --text-muted: #64748b;
+
+  --chart-emerald: #10b981;
+  --chart-violet: #8b5cf6;
+  --chart-blue: #3b82f6;
+  --chart-amber: #f59e0b;
+  --chart-rose: #f43f5e;
+  --chart-orange: #f97316;
+  --chart-yellow: #eab308;
+  --chart-pink: #ec4899;
+  --chart-purple: #a855f7;
+  --chart-red: #ef4444;
+  --chart-green: #22c55e;
+  --chart-teal: #14b8a6;
+  --chart-gray: #64748b;
+  --chart-slate: #64748b;
+}
+
+.dark {
+  --background: #020617;
+  --foreground: #f8fafc;
+
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+
+  --surface-hover: rgba(255, 255, 255, 0.05);
+  --surface-border: rgba(255, 255, 255, 0.1);
+  --text-primary: #ffffff;
+  --text-muted: #94a3b8;
+}
+
+/* Base resets and smoothing */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Grainy texture overlay */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Typography styles */
+h1, h2, h3, .font-display {
+  font-family: var(--font-outfit), system-ui;
+  letter-spacing: -0.02em;
+}
+
+.font-body {
+  font-family: var(--font-inter), system-ui;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--surface-border);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Recharts Tooltip Styling Override */
+.recharts-default-tooltip {
+  background-color: var(--background) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid var(--surface-border) !important;
+  border-radius: 8px !important;
+  padding: 12px !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2) !important;
+}
