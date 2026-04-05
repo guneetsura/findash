@@ -11,7 +11,7 @@ export default function InsightsPage() {
     <div className="min-h-screen bg-background relative selection:bg-accent-violet/20">
       {/* Background ambient glows */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-[10%] right-[-10%] w-[40%] h-[40%] bg-accent-violet/5 blur-[120px] rounded-full animate-pulse" />
+        <div className="absolute top-[10%] right-[-10%] w-[40%] h-[40%] bg-violet-500/[0.05] dark:bg-accent-violet/5 blur-[120px] rounded-full animate-pulse" />
       </div>
 
       <div className="relative z-10 flex flex-col max-w-[1600px] mx-auto">

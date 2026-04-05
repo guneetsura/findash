@@ -22,11 +22,11 @@ export function TransactionFilters() {
         {/* Search */}
         <div className="relative w-full md:max-w-md">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <Search className="h-4 w-4 text-text-muted" />
+            <Search className="h-4 w-4 text-slate-400 dark:text-text-muted" />
           </div>
           <input
             type="text"
-            className="block w-full pl-10 pr-3 py-2 border border-surface-border rounded-xl leading-5 bg-surface-hover text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-accent-emerald focus:border-accent-emerald sm:text-sm transition-all shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]"
+            className="block w-full pl-10 pr-3 py-2.5 border border-slate-200/80 dark:border-surface-border rounded-xl leading-5 bg-white dark:bg-surface-hover text-slate-800 dark:text-text-primary placeholder-slate-400 dark:placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm transition-all shadow-sm"
             placeholder="Search transactions..."
             value={state.search}
             onChange={handleSearchChange}
@@ -34,7 +34,7 @@ export function TransactionFilters() {
         </div>
 
         {/* Type Toggle */}
-        <div className="flex bg-surface-hover border border-surface-border p-1 rounded-xl">
+        <div className="flex bg-slate-100/80 dark:bg-surface-hover border border-slate-200/80 dark:border-surface-border p-1 rounded-xl">
           {(['all', 'income', 'expense'] as const).map((type) => (
             <button
               key={type}
@@ -42,8 +42,8 @@ export function TransactionFilters() {
               className={cn(
                 'px-4 py-1.5 text-xs font-bold rounded-lg transition-all capitalize',
                 state.type === type
-                  ? type === 'income' ? 'bg-accent-emerald text-background' : type === 'expense' ? 'bg-accent-violet text-background' : 'bg-text-primary text-background'
-                  : 'text-text-muted hover:text-text-primary'
+                  ? type === 'income' ? 'bg-emerald-500 text-white shadow-sm' : type === 'expense' ? 'bg-violet-500 text-white shadow-sm' : 'bg-slate-700 text-white shadow-sm'
+                  : 'text-slate-600 dark:text-text-muted hover:text-slate-800 dark:hover:text-text-primary'
               )}
             >
               {type}
@@ -55,7 +55,7 @@ export function TransactionFilters() {
         {hasActiveFilters && (
           <button
             onClick={() => dispatch({ type: 'RESET' })}
-            className="ml-auto flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold text-rose-400/80 hover:text-rose-400 hover:bg-rose-400/10 transition-colors"
+            className="ml-auto flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold text-rose-500 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-400/10 transition-colors"
           >
             <FilterX className="w-3.5 h-3.5" />
             Clear
@@ -65,7 +65,7 @@ export function TransactionFilters() {
 
       {/* Categories */}
       <div className="flex gap-2 flex-wrap items-center">
-        <span className="text-[10px] text-text-muted uppercase tracking-widest font-bold mr-2">Categories</span>
+        <span className="text-[10px] text-slate-500 dark:text-text-muted uppercase tracking-widest font-bold mr-2">Categories</span>
         {ALL_CATEGORIES.map((cat) => {
           const isActive = state.categories.includes(cat);
           return (
@@ -75,8 +75,8 @@ export function TransactionFilters() {
               className={cn(
                 'px-3 py-1 text-xs font-semibold rounded-full border transition-all',
                 isActive
-                  ? 'border-accent-emerald/50 bg-accent-emerald/10 text-accent-emerald shadow-[0_0_10px_rgba(16,185,129,0.2)]'
-                  : 'border-surface-border bg-transparent text-text-muted hover:border-text-muted hover:text-text-primary'
+                  ? 'border-emerald-400/80 bg-emerald-50 text-emerald-700 shadow-[0_0_10px_rgba(16,185,129,0.12)] dark:border-accent-emerald/50 dark:bg-accent-emerald/10 dark:text-accent-emerald dark:shadow-[0_0_10px_rgba(16,185,129,0.2)]'
+                  : 'border-slate-200/80 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-800 dark:border-surface-border dark:bg-transparent dark:text-text-muted dark:hover:border-text-muted dark:hover:text-text-primary'
               )}
             >
               {CATEGORY_LABELS[cat]}

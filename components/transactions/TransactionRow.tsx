@@ -15,15 +15,15 @@ interface TransactionRowProps {
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
-  food: 'text-amber-400 bg-amber-400/10 border-amber-400/20',
-  transport: 'text-blue-400 bg-blue-400/10 border-blue-400/20',
-  bills: 'text-violet-400 bg-violet-400/10 border-violet-400/20',
-  shopping: 'text-pink-400 bg-pink-400/10 border-pink-400/20',
-  entertainment: 'text-purple-400 bg-purple-400/10 border-purple-400/20',
-  health: 'text-rose-400 bg-rose-400/10 border-rose-400/20',
-  salary: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20',
-  investments: 'text-cyan-400 bg-cyan-400/10 border-cyan-400/20',
-  other: 'text-slate-400 bg-slate-400/10 border-slate-400/20',
+  food: 'text-amber-700 bg-amber-50 border-amber-200/80 dark:text-amber-400 dark:bg-amber-400/10 dark:border-amber-400/20',
+  transport: 'text-blue-700 bg-blue-50 border-blue-200/80 dark:text-blue-400 dark:bg-blue-400/10 dark:border-blue-400/20',
+  bills: 'text-violet-700 bg-violet-50 border-violet-200/80 dark:text-violet-400 dark:bg-violet-400/10 dark:border-violet-400/20',
+  shopping: 'text-pink-700 bg-pink-50 border-pink-200/80 dark:text-pink-400 dark:bg-pink-400/10 dark:border-pink-400/20',
+  entertainment: 'text-purple-700 bg-purple-50 border-purple-200/80 dark:text-purple-400 dark:bg-purple-400/10 dark:border-purple-400/20',
+  health: 'text-rose-700 bg-rose-50 border-rose-200/80 dark:text-rose-400 dark:bg-rose-400/10 dark:border-rose-400/20',
+  salary: 'text-emerald-700 bg-emerald-50 border-emerald-200/80 dark:text-emerald-400 dark:bg-emerald-400/10 dark:border-emerald-400/20',
+  investments: 'text-cyan-700 bg-cyan-50 border-cyan-200/80 dark:text-cyan-400 dark:bg-cyan-400/10 dark:border-cyan-400/20',
+  other: 'text-slate-700 bg-slate-50 border-slate-200/80 dark:text-slate-400 dark:bg-slate-400/10 dark:border-slate-400/20',
 };
 
 export function TransactionRow({ transaction, role, onEdit, onDelete }: TransactionRowProps) {
@@ -40,7 +40,7 @@ export function TransactionRow({ transaction, role, onEdit, onDelete }: Transact
       </td>
       <td className="px-3 py-4 text-sm font-medium text-text-primary">
         <div className="flex items-center gap-3">
-           <div className={cn("p-1.5 rounded-lg", isIncome ? "bg-accent-emerald/10 text-accent-emerald" : "bg-surface-hover text-text-muted")}>
+           <div className={cn("p-1.5 rounded-lg", isIncome ? "bg-emerald-100 text-emerald-600 dark:bg-accent-emerald/10 dark:text-accent-emerald" : "bg-slate-100 text-slate-500 dark:bg-surface-hover dark:text-text-muted")}>
              {isIncome ? <TrendingUp className="w-3.5 h-3.5" /> : <TrendingDown className="w-3.5 h-3.5" />}
            </div>
            {transaction.description}
@@ -57,7 +57,7 @@ export function TransactionRow({ transaction, role, onEdit, onDelete }: Transact
       <td className="px-3 py-4 whitespace-nowrap text-right">
         <span className={cn(
           "font-display text-sm font-bold tracking-wide",
-          isIncome ? "text-accent-emerald" : "text-text-muted"
+          isIncome ? "text-emerald-600 dark:text-accent-emerald" : "text-slate-600 dark:text-text-muted"
         )}>
           {isIncome ? '+' : '-'}{formatINR(transaction.amount)}
         </span>
@@ -69,21 +69,21 @@ export function TransactionRow({ transaction, role, onEdit, onDelete }: Transact
           <div className="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
             <button
               onClick={() => onEdit(transaction)}
-              className="p-1.5 text-text-muted hover:text-accent-emerald hover:bg-accent-emerald/10 rounded-md transition-colors"
+              className="p-1.5 text-slate-400 hover:text-emerald-600 hover:bg-emerald-100 dark:hover:bg-accent-emerald/10 rounded-md transition-colors"
               title="Edit"
             >
               <Edit2 className="w-4 h-4" />
             </button>
             <button
               onClick={() => onDelete(transaction.id)}
-              className="p-1.5 text-text-muted hover:text-rose-400 hover:bg-rose-400/10 rounded-md transition-colors"
+              className="p-1.5 text-slate-400 hover:text-rose-500 hover:bg-rose-100 dark:hover:bg-rose-400/10 rounded-md transition-colors"
               title="Delete"
             >
               <Trash2 className="w-4 h-4" />
             </button>
           </div>
         ) : (
-           <span className="text-xs text-text-muted italic group-hover:text-text-primary transition-colors">View Only</span>
+           <span className="text-xs text-slate-400 dark:text-text-muted italic group-hover:text-slate-600 dark:group-hover:text-text-primary transition-colors">View Only</span>
         )}
       </td>
     </motion.tr>

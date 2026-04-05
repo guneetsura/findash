@@ -47,10 +47,10 @@ export function SpendingBreakdownChart() {
       className="glass-panel rounded-2xl p-6 relative overflow-hidden"
     >
       <div className="mb-6">
-        <h2 className="font-display text-xl font-bold text-text-primary tracking-tight">
+        <h2 className="font-display text-xl font-bold text-slate-900 dark:text-text-primary tracking-tight">
           Spending Breakdown
         </h2>
-        <p className="text-xs text-text-muted font-medium uppercase tracking-wider mt-1">Allocation by category</p>
+        <p className="text-xs text-slate-500 dark:text-text-muted font-medium uppercase tracking-wider mt-1">Allocation by category</p>
       </div>
 
       <div className="h-64 relative">
@@ -84,15 +84,15 @@ export function SpendingBreakdownChart() {
                     if (active && payload && payload.length) {
                       const data = payload[0].payload;
                       return (
-                        <div className="bg-background backdrop-blur-md border border-surface-border p-3 rounded-lg shadow-2xl">
-                          <p className="text-[10px] uppercase tracking-widest font-bold text-text-muted mb-1">{data.name}</p>
+                        <div className="bg-white dark:bg-background backdrop-blur-md border border-slate-200 dark:border-surface-border p-3 rounded-lg shadow-xl">
+                          <p className="text-[10px] uppercase tracking-widest font-bold text-slate-500 dark:text-text-muted mb-1">{data.name}</p>
                           <div className="flex items-center gap-2">
                             <div className="w-2 h-2 rounded-full" style={{ backgroundColor: data.color }} />
-                            <p className="font-display font-bold text-text-primary">
+                            <p className="font-display font-bold text-slate-800 dark:text-text-primary">
                               {formatINR(data.value)}
                             </p>
                           </div>
-                          <p className="text-[10px] text-text-muted mt-1 font-semibold">{data.percentage.toFixed(1)}% of total</p>
+                          <p className="text-[10px] text-slate-400 dark:text-text-muted mt-1 font-semibold">{data.percentage.toFixed(1)}% of total</p>
                         </div>
                       );
                     }
@@ -106,14 +106,14 @@ export function SpendingBreakdownChart() {
             </ResponsiveContainer>
             {/* Center label */}
             <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-              <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-text-muted">Expenses</span>
-              <span className="text-lg font-display font-bold text-text-primary mt-1">
+              <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500 dark:text-text-muted">Expenses</span>
+              <span className="text-lg font-display font-bold text-slate-900 dark:text-text-primary mt-1">
                 {breakdown.length} Categories
               </span>
             </div>
           </>
         ) : (
-          <div className="h-full flex items-center justify-center text-text-muted text-xs font-semibold uppercase tracking-widest">
+          <div className="h-full flex items-center justify-center text-slate-500 dark:text-text-muted text-xs font-semibold uppercase tracking-widest">
             No expense data
           </div>
         )}
@@ -126,7 +126,7 @@ export function SpendingBreakdownChart() {
             <div
               key={item.category}
               onClick={() => handleCategoryClick(item.category)}
-              className="group flex items-center gap-3 p-2 rounded-xl hover:bg-surface-hover transition-colors cursor-pointer"
+              className="group flex items-center gap-3 p-2 rounded-xl hover:bg-slate-100/80 dark:hover:bg-surface-hover transition-colors cursor-pointer"
             >
               <div
                 className="w-2 h-6 rounded-full shrink-0"
@@ -135,14 +135,14 @@ export function SpendingBreakdownChart() {
                 }}
               />
               <div className="flex flex-col min-w-0">
-                <span className="text-xs font-bold text-text-muted group-hover:text-text-primary transition-colors truncate">
+                <span className="text-xs font-bold text-slate-600 dark:text-text-muted group-hover:text-slate-800 dark:group-hover:text-text-primary transition-colors truncate">
                   {CATEGORY_LABELS[item.category]}
                 </span>
-                <span className="text-[10px] font-semibold text-text-muted">
+                <span className="text-[10px] font-semibold text-slate-500 dark:text-text-muted">
                   {item.percentage.toFixed(1)}% allocation
                 </span>
               </div>
-              <span className="text-xs font-display font-bold text-text-primary ml-auto shrink-0 pl-2">
+              <span className="text-xs font-display font-bold text-slate-800 dark:text-text-primary ml-auto shrink-0 pl-2">
                 {formatINR(item.amount)}
               </span>
             </div>

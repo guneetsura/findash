@@ -46,7 +46,7 @@ export function BalanceTrendChart() {
   }, [transactions, selectedPeriod]);
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.4 }}
@@ -54,12 +54,12 @@ export function BalanceTrendChart() {
     >
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h2 className="font-display text-xl font-bold text-text-primary tracking-tight">
+          <h2 className="font-display text-xl font-bold text-slate-900 dark:text-text-primary tracking-tight">
             Balance Trend
           </h2>
-          <p className="text-xs text-text-muted font-medium uppercase tracking-wider mt-1">Growth analysis</p>
+          <p className="text-xs text-slate-500 dark:text-text-muted font-medium uppercase tracking-wider mt-1">Growth analysis</p>
         </div>
-        <div className="flex p-1 rounded-full bg-surface-hover border border-surface-border gap-1">
+        <div className="flex p-1 rounded-full bg-slate-100/80 dark:bg-surface-hover border border-slate-200/80 dark:border-surface-border gap-1">
           {periods.map((p) => (
             <button
               key={p.value}
@@ -67,8 +67,8 @@ export function BalanceTrendChart() {
               className={cn(
                 'px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-300',
                 period === p.value
-                  ? 'bg-accent-emerald text-background'
-                  : 'text-text-muted hover:text-text-primary hover:bg-surface-hover'
+                  ? 'bg-emerald-500 text-white shadow-sm dark:bg-accent-emerald dark:text-background'
+                  : 'text-slate-600 dark:text-text-muted hover:text-slate-800 dark:hover:text-text-primary hover:bg-slate-200/80 dark:hover:bg-surface-hover'
               )}
             >
               {p.label}
@@ -119,9 +119,9 @@ export function BalanceTrendChart() {
                 content={({ active, payload, label }) => {
                   if (active && payload && payload.length) {
                     return (
-                      <div className="bg-background backdrop-blur-md border border-surface-border p-3 rounded-lg shadow-2xl">
-                        <p className="text-[10px] uppercase tracking-widest font-bold text-text-muted mb-1">{label}</p>
-                        <p className="font-display font-bold text-text-primary">
+                      <div className="bg-white dark:bg-background backdrop-blur-md border border-slate-200 dark:border-surface-border p-3 rounded-lg shadow-xl">
+                        <p className="text-[10px] uppercase tracking-widest font-bold text-slate-500 dark:text-text-muted mb-1">{label}</p>
+                        <p className="font-display font-bold text-slate-800 dark:text-text-primary">
                           {formatINR(payload[0].value as number)}
                         </p>
                       </div>

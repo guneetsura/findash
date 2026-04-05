@@ -21,7 +21,8 @@ export function MonthlyComparisonChart() {
   const { theme } = useTheme();
   const { transactions } = useTransactions();
   const data = getMonthlyComparison(transactions).reverse(); // Oldest to newest horizontally
-  const cursorFill = theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+  const cursorFill = theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.06)';
+  const gridStroke = theme === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.08)';
 
   return (
     <motion.div
@@ -30,17 +31,17 @@ export function MonthlyComparisonChart() {
       transition={{ delay: 0.1 }}
       className="glass-panel p-6 rounded-2xl h-full flex flex-col relative overflow-hidden"
     >
-      <div className="absolute top-0 left-0 w-40 h-40 bg-accent-emerald/5 blur-[80px] rounded-full -ml-10 -mt-10" />
+      <div className="absolute top-0 left-0 w-40 h-40 bg-emerald-500/[0.07] dark:bg-accent-emerald/5 blur-[80px] rounded-full -ml-10 -mt-10" />
 
       <div className="flex items-center justify-between mb-8 relative z-10">
         <div>
-          <h2 className="font-display text-xl font-bold text-text-primary tracking-widest uppercase">
+          <h2 className="font-display text-xl font-bold text-slate-900 dark:text-text-primary tracking-widest uppercase">
             Flow History
           </h2>
-          <p className="text-[10px] text-text-muted font-bold uppercase tracking-widest mt-1">Income vs Expenses (6M)</p>
+          <p className="text-[10px] text-slate-500 dark:text-text-muted font-bold uppercase tracking-widest mt-1">Income vs Expenses (6M)</p>
         </div>
-        <div className="p-2 bg-surface-hover rounded-xl border border-surface-border">
-          <Activity className="w-4 h-4 text-text-muted" />
+        <div className="p-2 bg-slate-100/80 dark:bg-surface-hover rounded-xl border border-slate-200/80 dark:border-surface-border">
+          <Activity className="w-4 h-4 text-slate-500 dark:text-text-muted" />
         </div>
       </div>
 
@@ -58,7 +59,7 @@ export function MonthlyComparisonChart() {
                   <stop offset="100%" stopColor="#5b21b6" />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="4 4" stroke="rgba(255, 255, 255, 0.05)" vertical={false} />
+              <CartesianGrid strokeDasharray="4 4" stroke={gridStroke} vertical={false} />
               <XAxis
                 dataKey="month"
                 tick={{ fontSize: 10, fontWeight: 600, fill: '#64748b' }}
@@ -78,15 +79,15 @@ export function MonthlyComparisonChart() {
                 content={({ active, payload, label }) => {
                   if (active && payload && payload.length) {
                     return (
-                      <div className="bg-background backdrop-blur-md border border-surface-border p-4 rounded-xl shadow-2xl flex flex-col gap-2">
-                        <p className="text-[10px] uppercase tracking-widest font-bold text-text-muted">{label}</p>
+                      <div className="bg-white dark:bg-background backdrop-blur-md border border-slate-200 dark:border-surface-border p-4 rounded-xl shadow-xl flex flex-col gap-2">
+                        <p className="text-[10px] uppercase tracking-widest font-bold text-slate-500 dark:text-text-muted">{label}</p>
                         {payload.map((entry: any) => (
                           <div key={entry.name} className="flex flex-col">
                             <div className="flex items-center gap-2">
                               <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: entry.color }} />
-                              <span className="text-xs font-semibold text-text-muted capitalize">{entry.name}</span>
+                              <span className="text-xs font-semibold text-slate-500 dark:text-text-muted capitalize">{entry.name}</span>
                             </div>
-                            <span className="font-display font-bold text-text-primary pl-3.5">
+                            <span className="font-display font-bold text-slate-800 dark:text-text-primary pl-3.5">
                               {formatINR(entry.value)}
                             </span>
                           </div>
@@ -124,7 +125,7 @@ export function MonthlyComparisonChart() {
             </BarChart>
           </ResponsiveContainer>
         ) : (
-          <div className="h-full flex items-center justify-center text-xs text-text-muted font-bold uppercase tracking-widest">
+          <div className="h-full flex items-center justify-center text-xs text-slate-400 dark:text-text-muted font-bold uppercase tracking-widest">
             Waiting for activity
           </div>
         )}

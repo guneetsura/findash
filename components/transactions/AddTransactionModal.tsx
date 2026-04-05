@@ -79,17 +79,17 @@ export function AddTransactionModal({ isOpen, onClose, editTransaction }: AddTra
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.95, opacity: 0, y: 20 }}
             transition={{ type: "spring", duration: 0.5, bounce: 0 }}
-            className="relative w-full max-w-lg glass-panel bg-background rounded-2xl p-6 border border-surface-border shadow-2xl overflow-hidden"
+            className="relative w-full max-w-lg glass-panel bg-white dark:bg-background rounded-2xl p-6 border border-slate-200/80 dark:border-surface-border shadow-2xl overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-40 h-40 bg-accent-emerald/10 blur-[80px] rounded-full -mr-10 -mt-10" />
+            <div className="absolute top-0 right-0 w-40 h-40 bg-emerald-500/[0.07] dark:bg-accent-emerald/10 blur-[80px] rounded-full -mr-10 -mt-10" />
 
             <div className="flex items-center justify-between mb-6 relative z-10">
-              <h2 className="text-xl font-display font-bold text-text-primary tracking-widest uppercase">
+              <h2 className="text-xl font-display font-bold text-slate-900 dark:text-text-primary tracking-widest uppercase">
                 {editTransaction ? 'Edit Transaction' : 'New Transaction'}
               </h2>
               <button
                 onClick={onClose}
-                className="p-2 -mr-2 text-text-muted hover:text-text-primary rounded-xl hover:bg-surface-hover transition-colors"
+                className="p-2 -mr-2 text-slate-400 dark:text-text-muted hover:text-slate-600 dark:hover:text-text-primary rounded-xl hover:bg-slate-100/80 dark:hover:bg-surface-hover transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -97,7 +97,7 @@ export function AddTransactionModal({ isOpen, onClose, editTransaction }: AddTra
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-5 relative z-10">
               {/* Type Toggle */}
-              <div className="flex p-1 bg-surface-hover rounded-xl border border-surface-border">
+              <div className="flex p-1 bg-slate-100/80 dark:bg-surface-hover rounded-xl border border-slate-200/80 dark:border-surface-border">
                 {(['expense', 'income'] as const).map((t) => (
                   <button
                     key={t}
@@ -105,8 +105,8 @@ export function AddTransactionModal({ isOpen, onClose, editTransaction }: AddTra
                     onClick={() => setType(t)}
                     className={`flex-1 py-2 text-xs font-bold uppercase tracking-widest rounded-lg transition-all ${
                       type === t
-                        ? t === 'expense' ? 'bg-accent-violet text-white shadow-lg' : 'bg-accent-emerald text-background shadow-lg'
-                        : 'text-text-muted hover:text-text-primary'
+                        ? t === 'expense' ? 'bg-violet-500 text-white shadow-lg dark:bg-accent-violet' : 'bg-emerald-500 text-white shadow-lg dark:bg-accent-emerald dark:text-background'
+                        : 'text-slate-600 dark:text-text-muted hover:text-slate-800 dark:hover:text-text-primary'
                     }`}
                   >
                     {t}
@@ -116,9 +116,9 @@ export function AddTransactionModal({ isOpen, onClose, editTransaction }: AddTra
 
               {/* Amount */}
               <div className="space-y-1.5">
-                <label className="text-[10px] font-bold text-text-muted uppercase tracking-widest px-1">Amount (INR)</label>
+                <label className="text-[10px] font-bold text-slate-600 dark:text-text-muted uppercase tracking-widest px-1">Amount (INR)</label>
                 <div className="relative">
-                  <span className="absolute inset-y-0 left-0 pl-4 flex items-center text-text-muted font-display font-bold">₹</span>
+                  <span className="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-400 dark:text-text-muted font-display font-bold">₹</span>
                   <input
                     type="number"
                     required
@@ -126,7 +126,7 @@ export function AddTransactionModal({ isOpen, onClose, editTransaction }: AddTra
                     step="0.01"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
-                    className="w-full pl-8 pr-4 py-3 bg-surface-hover border border-surface-border rounded-xl text-text-primary font-display font-bold text-lg focus:outline-none focus:ring-2 focus:ring-accent-emerald transition-all"
+                    className="w-full pl-8 pr-4 py-3 bg-white dark:bg-surface-hover border border-slate-200/80 dark:border-surface-border rounded-xl text-slate-900 dark:text-text-primary font-display font-bold text-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:focus:ring-accent-emerald transition-all shadow-sm"
                     placeholder="0.00"
                   />
                 </div>
@@ -134,13 +134,13 @@ export function AddTransactionModal({ isOpen, onClose, editTransaction }: AddTra
 
               {/* Description */}
               <div className="space-y-1.5">
-                <label className="text-[10px] font-bold text-text-muted uppercase tracking-widest px-1">Description</label>
+                <label className="text-[10px] font-bold text-slate-600 dark:text-text-muted uppercase tracking-widest px-1">Description</label>
                 <input
                   type="text"
                   required
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  className="w-full px-4 py-3 bg-surface-hover border border-surface-border rounded-xl text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-emerald transition-all"
+                  className="w-full px-4 py-3 bg-white dark:bg-surface-hover border border-slate-200/80 dark:border-surface-border rounded-xl text-slate-900 dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:focus:ring-accent-emerald transition-all shadow-sm"
                   placeholder="e.g. Groceries at Supermart"
                 />
               </div>
@@ -148,11 +148,11 @@ export function AddTransactionModal({ isOpen, onClose, editTransaction }: AddTra
               <div className="grid grid-cols-2 gap-4">
                 {/* Category */}
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-text-muted uppercase tracking-widest px-1">Category</label>
+                  <label className="text-[10px] font-bold text-slate-600 dark:text-text-muted uppercase tracking-widest px-1">Category</label>
                   <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value as Category)}
-                    className="w-full px-4 py-3 bg-background border border-surface-border rounded-xl text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-emerald transition-all appearance-none"
+                    className="w-full px-4 py-3 bg-white dark:bg-background border border-slate-200/80 dark:border-surface-border rounded-xl text-slate-900 dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:focus:ring-accent-emerald transition-all appearance-none shadow-sm"
                   >
                     {ALL_CATEGORIES.map((cat) => (
                       <option key={cat} value={cat}>
@@ -164,13 +164,13 @@ export function AddTransactionModal({ isOpen, onClose, editTransaction }: AddTra
 
                 {/* Date */}
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-text-muted uppercase tracking-widest px-1">Date</label>
+                  <label className="text-[10px] font-bold text-slate-600 dark:text-text-muted uppercase tracking-widest px-1">Date</label>
                   <input
                     type="date"
                     required
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="w-full px-4 py-3 bg-surface-hover border border-surface-border rounded-xl text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-emerald transition-all"
+                    className="w-full px-4 py-3 bg-white dark:bg-surface-hover border border-slate-200/80 dark:border-surface-border rounded-xl text-slate-900 dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:focus:ring-accent-emerald transition-all shadow-sm"
                   />
                 </div>
               </div>
@@ -178,7 +178,7 @@ export function AddTransactionModal({ isOpen, onClose, editTransaction }: AddTra
               {/* Submit */}
               <button
                 type="submit"
-                className="mt-4 w-full py-3 bg-gradient-to-r from-accent-emerald to-emerald-400 text-background font-display font-bold text-sm tracking-widest uppercase rounded-xl hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.3)]"
+                className="mt-4 w-full py-3 bg-gradient-to-r from-emerald-500 to-emerald-400 text-white font-display font-bold text-sm tracking-widest uppercase rounded-xl hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.2)] dark:from-accent-emerald dark:to-emerald-400 dark:text-background"
               >
                 {editTransaction ? 'Save Changes' : (
                    <>

@@ -34,7 +34,7 @@ export default function TransactionsPage() {
     <div className="min-h-screen bg-background relative selection:bg-accent-emerald/20">
       {/* Background ambient glows */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[20%] left-[-10%] w-[30%] h-[30%] bg-accent-emerald/5 blur-[120px] rounded-full animate-pulse" />
+        <div className="absolute top-[20%] left-[-10%] w-[30%] h-[30%] bg-emerald-500/[0.06] dark:bg-accent-emerald/5 blur-[120px] rounded-full animate-pulse" />
       </div>
 
       <div className="relative z-10 flex flex-col max-w-[1600px] mx-auto">
