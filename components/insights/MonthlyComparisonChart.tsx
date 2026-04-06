@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import {
   BarChart,
@@ -18,11 +18,12 @@ import { motion } from 'framer-motion';
 import { Activity } from 'lucide-react';
 
 export function MonthlyComparisonChart() {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const { transactions } = useTransactions();
   const data = getMonthlyComparison(transactions).reverse(); // Oldest to newest horizontally
-  const cursorFill = theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.06)';
-  const gridStroke = theme === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.08)';
+  const isDark = resolvedTheme === 'dark';
+  const cursorFill = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.06)';
+  const gridStroke = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.08)';
 
   return (
     <motion.div
