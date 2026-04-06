@@ -16,12 +16,6 @@ import { formatDateShort, formatINR } from '@/lib/formatters';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 
-const CHART_COLORS = {
-  emerald: 'var(--chart-emerald)',
-  violet: 'var(--chart-violet)',
-  slate: 'var(--chart-slate)',
-};
-
 type Period = '30D' | '90D' | '6M';
 
 const periods: { value: Period; label: string; days: number }[] = [

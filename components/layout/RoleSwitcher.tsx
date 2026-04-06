@@ -5,7 +5,9 @@ import { Role } from '@/types';
 import { cn } from '@/lib/utils';
 import { Shield, Eye } from 'lucide-react';
 
-const roles: { value: Role; label: string; description: string; icon: any }[] = [
+import type { LucideIcon } from 'lucide-react';
+
+const roles: { value: Role; label: string; description: string; icon: LucideIcon }[] = [
   {
     value: 'admin',
     label: 'Admin',

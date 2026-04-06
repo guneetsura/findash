@@ -107,7 +107,7 @@ const expenseCategories: Category[] = [
   'other',
 ];
 
-const incomeCategories: Category[] = ['salary', 'investments', 'other'];
+// Income categories are used in the mock data generation above
 
 function generateTransactions(count: number): Transaction[] {
   const transactions: Transaction[] = [];

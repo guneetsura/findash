@@ -81,17 +81,22 @@ export function MonthlyComparisonChart() {
                     return (
                       <div className="bg-white dark:bg-background backdrop-blur-md border border-slate-200 dark:border-surface-border p-4 rounded-xl shadow-xl flex flex-col gap-2">
                         <p className="text-[10px] uppercase tracking-widest font-bold text-slate-500 dark:text-text-muted">{label}</p>
-                        {payload.map((entry: any) => (
-                          <div key={entry.name} className="flex flex-col">
-                            <div className="flex items-center gap-2">
-                              <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: entry.color }} />
-                              <span className="text-xs font-semibold text-slate-500 dark:text-text-muted capitalize">{entry.name}</span>
+                        {payload.map((entry) => {
+                          const name = entry.name as string;
+                          const value = entry.value as number;
+                          const color = entry.color;
+                          return (
+                            <div key={name} className="flex flex-col">
+                              <div className="flex items-center gap-2">
+                                <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: color }} />
+                                <span className="text-xs font-semibold text-slate-500 dark:text-text-muted capitalize">{name}</span>
+                              </div>
+                              <span className="font-display font-bold text-slate-800 dark:text-text-primary pl-3.5">
+                                {formatINR(value)}
+                              </span>
                             </div>
-                            <span className="font-display font-bold text-slate-800 dark:text-text-primary pl-3.5">
-                              {formatINR(entry.value)}
-                            </span>
-                          </div>
-                        ))}
+                          );
+                        })}
                       </div>
                     );
                   }

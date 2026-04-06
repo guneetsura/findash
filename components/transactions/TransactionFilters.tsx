@@ -4,7 +4,6 @@ import { useFilters, useFilterDispatch } from '@/context/FilterContext';
 import { CATEGORY_LABELS, ALL_CATEGORIES } from '@/constants/categories';
 import { Search, FilterX } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Category, TransactionType } from '@/types';
 
 export function TransactionFilters() {
   const state = useFilters();

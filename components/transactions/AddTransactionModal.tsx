@@ -22,7 +22,7 @@ export function AddTransactionModal({ isOpen, onClose, editTransaction }: AddTra
   const [category, setCategory] = useState<Category>('other');
   const [date, setDate] = useState(() => new Date().toISOString().split('T')[0]);
 
-  // Sync edit mode
+  // Sync edit mode - this is intentional to sync form state with incoming props
   useEffect(() => {
     if (editTransaction) {
       setType(editTransaction.type);
@@ -66,14 +66,14 @@ export function AddTransactionModal({ isOpen, onClose, editTransaction }: AddTra
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
             className="absolute inset-0 bg-background/80 backdrop-blur-sm"
           />
-          
+
           <motion.div
             initial={{ scale: 0.95, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -103,11 +103,10 @@ export function AddTransactionModal({ isOpen, onClose, editTransaction }: AddTra
                     key={t}
                     type="button"
                     onClick={() => setType(t)}
-                    className={`flex-1 py-2 text-xs font-bold uppercase tracking-widest rounded-lg transition-all ${
-                      type === t
+                    className={`flex-1 py-2 text-xs font-bold uppercase tracking-widest rounded-lg transition-all ${type === t
                         ? t === 'expense' ? 'bg-violet-500 text-white shadow-lg dark:bg-accent-violet' : 'bg-emerald-500 text-white shadow-lg dark:bg-accent-emerald dark:text-background'
                         : 'text-slate-600 dark:text-text-muted hover:text-slate-800 dark:hover:text-text-primary'
-                    }`}
+                      }`}
                   >
                     {t}
                   </button>
@@ -181,10 +180,10 @@ export function AddTransactionModal({ isOpen, onClose, editTransaction }: AddTra
                 className="mt-4 w-full py-3 bg-gradient-to-r from-emerald-500 to-emerald-400 text-white font-display font-bold text-sm tracking-widest uppercase rounded-xl hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.2)] dark:from-accent-emerald dark:to-emerald-400 dark:text-background"
               >
                 {editTransaction ? 'Save Changes' : (
-                   <>
-                     <Plus className="w-5 h-5" />
-                     Add Transaction
-                   </>
+                  <>
+                    <Plus className="w-5 h-5" />
+                    Add Transaction
+                  </>
                 )}
               </button>
             </form>

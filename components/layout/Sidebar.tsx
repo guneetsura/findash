@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { LayoutGrid, ArrowRightLeft, PieChart, Wallet } from 'lucide-react';
@@ -71,11 +72,11 @@ export function Sidebar() {
           <div className="p-6 mt-auto">
             <div className="glass-panel p-4 rounded-xl flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-white dark:bg-background border border-slate-200/80 dark:border-surface-border flex items-center justify-center shadow-sm">
-                 <img src={`https://api.dicebear.com/7.x/notionists/svg?seed=Admin`} alt="Avatar" className="w-8 h-8 object-contain" />
+                <img src={`https://api.dicebear.com/7.x/notionists/svg?seed=Admin`} alt="Avatar" className="w-8 h-8 object-contain" />
               </div>
               <div className="flex flex-col">
-                 <span className="text-xs font-bold text-slate-700 dark:text-text-primary">Guest User</span>
-                 <span className="text-[10px] text-emerald-600 dark:text-accent-emerald tracking-wider uppercase font-semibold">Active</span>
+                <span className="text-xs font-bold text-slate-700 dark:text-text-primary">Guest User</span>
+                <span className="text-[10px] text-emerald-600 dark:text-accent-emerald tracking-wider uppercase font-semibold">Active</span>
               </div>
             </div>
           </div>

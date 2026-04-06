@@ -7,9 +7,14 @@ import { useRole } from '@/context/RoleContext';
 import { TransactionRow } from './TransactionRow';
 import { Transaction } from '@/types';
 import { ChevronUp, ChevronDown, ChevronLeft, ChevronRight, Inbox, ArrowDownUp } from 'lucide-react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const PAGE_SIZE = 10;
+
+function SortIcon({ column, sortKey, sortDir }: { column: string; sortKey: string; sortDir: 'asc' | 'desc' }) {
+  if (sortKey !== column) return <ArrowDownUp className="w-3 h-3 opacity-30 ml-1" />;
+  return sortDir === 'asc' ? <ChevronUp className="w-3 h-3 text-accent-emerald ml-1" /> : <ChevronDown className="w-3 h-3 text-accent-emerald ml-1" />;
+}
 
 export function TransactionTable({ onEdit }: { onEdit: (t: Transaction) => void }) {
   const { transactions } = useTransactions();
@@ -83,11 +88,6 @@ export function TransactionTable({ onEdit }: { onEdit: (t: Transaction) => void 
     }
   };
 
-  const SortIcon = ({ column }: { column: string }) => {
-    if (sortKey !== column) return <ArrowDownUp className="w-3 h-3 opacity-30 ml-1" />;
-    return sortDir === 'asc' ? <ChevronUp className="w-3 h-3 text-accent-emerald ml-1" /> : <ChevronDown className="w-3 h-3 text-accent-emerald ml-1" />;
-  };
-
   return (
     <div className="flex flex-col gap-4">
       <div className="glass-panel overflow-hidden rounded-2xl border border-surface-border shadow-2xl">
@@ -99,46 +99,46 @@ export function TransactionTable({ onEdit }: { onEdit: (t: Transaction) => void 
                   onClick={() => handleSort('date')}
                   className="group cursor-pointer py-4 pl-4 pr-3 text-left text-xs font-bold text-text-muted tracking-widest uppercase hover:text-text-primary transition-colors"
                 >
-                  <div className="flex items-center">Date <SortIcon column="date" /></div>
+                  <div className="flex items-center">Date <SortIcon column="date" sortKey={sortKey} sortDir={sortDir} /></div>
                 </th>
                 <th className="px-3 py-4 text-left text-xs font-bold text-text-muted tracking-widest uppercase">Description</th>
                 <th
                   onClick={() => handleSort('category')}
                   className="group cursor-pointer px-3 py-4 text-left text-xs font-bold text-text-muted tracking-widest uppercase hover:text-text-primary transition-colors"
                 >
-                  <div className="flex items-center">Category <SortIcon column="category" /></div>
+                  <div className="flex items-center">Category <SortIcon column="category" sortKey={sortKey} sortDir={sortDir} /></div>
                 </th>
                 <th
                   onClick={() => handleSort('amount')}
                   className="group cursor-pointer px-3 py-4 text-right text-xs font-bold text-text-muted tracking-widest uppercase hover:text-text-primary transition-colors"
                 >
-                  <div className="flex items-center justify-end">Amount <SortIcon column="amount" /></div>
+                  <div className="flex items-center justify-end">Amount <SortIcon column="amount" sortKey={sortKey} sortDir={sortDir} /></div>
                 </th>
                 <th className="py-4 pl-3 pr-4"></th>
               </tr>
             </thead>
             <tbody>
               {paginatedTransactions.map((t) => (
-                <TransactionRow 
-                  key={t.id} 
-                  transaction={t} 
-                  role={role} 
-                  onEdit={onEdit} 
-                  onDelete={handleDelete} 
+                <TransactionRow
+                  key={t.id}
+                  transaction={t}
+                  role={role}
+                  onEdit={onEdit}
+                  onDelete={handleDelete}
                 />
               ))}
-              
+
               {paginatedTransactions.length === 0 && (
                 <tr>
                   <td colSpan={5}>
                     <div className="flex flex-col items-center justify-center py-20 text-text-muted gap-4">
-                       <div className="w-16 h-16 rounded-full bg-surface-hover flex items-center justify-center border border-surface-border">
-                         <Inbox className="w-8 h-8 opacity-50" />
-                       </div>
-                       <div className="text-center">
-                         <p className="font-display font-bold text-text-primary tracking-wide">No transactions found</p>
-                         <p className="text-xs mt-1 font-semibold uppercase tracking-widest">Adjust filters or add new data</p>
-                       </div>
+                      <div className="w-16 h-16 rounded-full bg-surface-hover flex items-center justify-center border border-surface-border">
+                        <Inbox className="w-8 h-8 opacity-50" />
+                      </div>
+                      <div className="text-center">
+                        <p className="font-display font-bold text-text-primary tracking-wide">No transactions found</p>
+                        <p className="text-xs mt-1 font-semibold uppercase tracking-widest">Adjust filters or add new data</p>
+                      </div>
                     </div>
                   </td>
                 </tr>
@@ -146,7 +146,7 @@ export function TransactionTable({ onEdit }: { onEdit: (t: Transaction) => void 
             </tbody>
           </table>
         </div>
-        
+
         {/* Pagination Footer */}
         {processedTransactions.length > 0 && (
           <div className="h-16 px-6 border-t border-surface-border bg-surface-hover flex items-center justify-between">

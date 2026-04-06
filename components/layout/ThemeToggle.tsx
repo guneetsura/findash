@@ -10,6 +10,7 @@ export function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // Mount check needed to avoid hydration mismatch with next-themes
     setMounted(true);
   }, []);
 
