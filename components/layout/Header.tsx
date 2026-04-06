@@ -36,19 +36,19 @@ export function Header({ title, subtitle }: HeaderProps) {
             initial={{ x: -10, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="text-sm text-slate-600 dark:text-text-muted font-medium"
+            className="hidden sm:block text-sm text-slate-600 dark:text-text-muted font-medium"
           >
             {subtitle}
           </motion.p>
         )}
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 sm:gap-4">
         <GlobalSearch />
 
         {/* {link === '/transactions' && <RoleSwitcher />} */}
 
-        <div className="flex items-center gap-2 border-l border-slate-200/80 dark:border-surface-border pl-4">
+        <div className="flex items-center gap-1 sm:gap-2 border-l border-slate-200/80 dark:border-surface-border pl-2 sm:pl-4">
           <NotificationDropdown />
           <ThemeToggle />
         </div>

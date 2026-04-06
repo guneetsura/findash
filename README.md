@@ -9,8 +9,8 @@ A premium, "Zen-Futuristic" financial dashboard and transaction registry applica
 - **Financial Analysis:** Algorithmic insights pinpointing your primary outflows, dynamic trends, and savings comparisons over the last 6 months.
 - **Glass-morphic Zen Design:** Curated visual language implementing atmospheric glows, deep midnight backgrounds (`#020617`), and `framer-motion` integrated transitions.
 - **Role-Based Workflows:** Seamless `Viewer` and `Admin` role switching, enforcing secure access to edit, delete, and add new transaction data.
-- **Full Persistence:** Data modifications are synchronously persisted to LocalStorage, ensuring zero loss of analytics across sessions.
-- **CSV Data Export:** Generate structural snapshots of your finances directly to your local file system.
+- **Full Persistence:** Data modifications are synchronously persisted to LocalStorage, ensuring zero loss of analytics and custom categories across sessions.
+- **CSV Data Export:** Generate structural snapshots of your finances directly to your local file system with category labels.
 
 ## Setup Instructions
 
@@ -28,6 +28,30 @@ A premium, "Zen-Futuristic" financial dashboard and transaction registry applica
 
 3. **Navigate to the App:**
    Open [http://localhost:3000](http://localhost:3000) in your browser. The app defaults to the `/dashboard` route.
+
+## Architecture
+
+### State Management
+The application uses React Context API with `useReducer` for predictable state management across four core domains:
+
+- **CategoryContext** — Manages custom transaction categories with localStorage persistence
+- **TransactionContext** — Handles transaction CRUD operations and data synchronization
+- **FilterContext** — Controls search, category filters, sorting, and date range options
+- **RoleContext** — Manages role-based access control (Admin vs Viewer)
+
+All providers are composed in `AppProviders` component with proper nesting order for dependency management.
+
+### Folder Structure
+```
+app/              # Next.js App Router pages
+components/       # Reusable UI components organized by feature
+context/          # React Context providers and custom hooks
+lib/              # Utility functions (analytics, formatters, export)
+types/            # TypeScript type definitions
+constants/        # Default data and configuration
+public/           # Static assets
+planning/         # Development roadmap and task tracking
+```
 
 ## Technology Stack
 
