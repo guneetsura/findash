@@ -37,7 +37,7 @@ export default function TransactionsPage() {
         <div className="absolute top-[20%] left-[-10%] w-[30%] h-[30%] bg-emerald-500/[0.06] dark:bg-accent-emerald/5 blur-[120px] rounded-full animate-pulse" />
       </div>
 
-      <div className="relative z-10 flex flex-col max-w-[1600px] mx-auto">
+      <div className="relative z-10 flex flex-col mx-auto">
         <Header 
           title="Ledger" 
           subtitle="Comprehensive transaction registry" 

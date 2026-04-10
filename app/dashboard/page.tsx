@@ -15,7 +15,7 @@ export default function DashboardPage() {
         <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-violet-500/[0.06] dark:bg-accent-violet/5 blur-[120px] rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
 
-      <div className="relative z-10 flex flex-col max-w-[1600px] mx-auto">
+      <div className="relative z-10 flex flex-col mx-auto">
         <Header 
           title="Overview" 
           subtitle="Real-time financial intelligence & analytics" 
